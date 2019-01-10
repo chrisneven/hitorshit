@@ -1,30 +1,26 @@
 import { ApolloServer } from 'apollo-server-express';
 import * as Express from 'Express';
-import { buildSchema, Resolver, Query } from 'type-graphql';
+import { buildSchema } from 'type-graphql';
 import 'reflect-metadata';
+import { createConnection } from 'typeorm';
+import { RegisterResolver } from './modules/user/Register';
 
-@Resolver()
-class HelloResolver {
-	@Query(() => String, { description: 'Hello world is a beautiful lorem ipsum' })
-	async hello() {
-		// fake async in this example
-		return 'hello world';
-	}
-}
 const main = async () => {
-	const schema = await buildSchema({
-		resolvers: [HelloResolver]
-	});
+    await createConnection();
 
-	const apolloServer = new ApolloServer({ schema });
+    const schema = await buildSchema({
+        resolvers: [RegisterResolver]
+    });
 
-	const app = Express();
+    const apolloServer = new ApolloServer({ schema });
 
-	apolloServer.applyMiddleware({ app });
+    const app = Express();
 
-	app.listen(4000, () => {
-		console.log('Server started on http://localhost:4000/graphql');
-	});
+    apolloServer.applyMiddleware({ app });
+
+    app.listen(4000, () => {
+        console.log('Server started on http://localhost:4000/graphql');
+    });
 };
 
 main();

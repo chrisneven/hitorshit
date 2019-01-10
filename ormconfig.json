@@ -1,0 +1,12 @@
+{
+    "name": "default",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 32770,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "hitorshit",
+    "synchronize": true,
+    "logging": true,
+    "entities": ["src/entity/*.*"]
+}
