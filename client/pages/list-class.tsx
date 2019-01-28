@@ -1,36 +1,60 @@
-import React from 'react'
-import { NextContext } from 'next'
+import { NextContext } from 'next';
+import React, { FormEvent } from 'react';
+import Layout from '../components/Layout';
+import List from '../components/List';
+import DataObject from '../interfaces';
 
-import Layout from '../components/Layout'
-import List from '../components/List'
-import IDataObject from '../interfaces'
-
-type Props = {
-  items: IDataObject[],
+interface Props {
+    items: DataObject[];
 }
 
-class ListClass extends React.Component<Props> {
-  static async getInitialProps({ pathname }: NextContext) {
-    // Example for including initial props in a Next.js page.
-    // Don't forget to include the respective types for any
-    // props passed into the component
-    const dataArray: IDataObject[] = [
-      { id: 101, name: 'larry' },
-      { id: 102, name: 'sam' },
-      { id: 103, name: 'jill' },
-      { id: 104, name: pathname },
-    ]
+class ListClass extends React.Component<Props, { items: DataObject[] }> {
+    state = { items: [] as DataObject[] };
+    static async getInitialProps({ pathname }: NextContext) {
+        // Example for including initial props in a Next.js page.
+        // Don't forget to include the respective types for any
+        // props passed into the component
+        const dataArray: DataObject[] = [
+            { id: 101, name: 'larry' },
+            { id: 102, name: 'sam' },
+            { id: 103, name: 'jill' },
+            { id: 104, name: pathname }
+        ];
+        return { items: dataArray };
+    }
 
-    return { items: dataArray }
-  }
+    componentDidMount = () => {
+        const items = this.props.items;
+        this.setState({ items });
+    };
 
-  render() {
-    return (
-      <Layout title="List Example | Next.js + TypeScript Example">
-        <List items={this.props.items} />
-      </Layout>
-    )
-  }
+    handleRemove = (itemToDelete: DataObject) => {
+        const items = this.state.items.filter(item => item !== itemToDelete);
+        this.setState({ items });
+        console.log(this.state.items);
+    };
+
+    handleAdd = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const { items } = this.state;
+        const calculatedId = items[items.length - 1] ? items[items.length - 1].id + 1 : 101;
+        items.push({ id: calculatedId, name: e.target[0].value });
+        this.setState({ items });
+    };
+
+    render() {
+        const { items } = this.state;
+        return (
+            <Layout title="List Example | Next.js + TypeScript Example">
+                <List handleRemove={this.handleRemove} items={items} />
+                <form onSubmit={this.handleAdd}>
+                    <label id="name">item: </label>
+                    <input id="name" name="name" type="text" />
+                    <button type="submit">Add item</button>
+                </form>
+            </Layout>
+        );
+    }
 }
 
-export default ListClass
+export default ListClass;

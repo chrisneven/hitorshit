@@ -1,19 +1,23 @@
-import * as React from "react"
-import ListItem from './ListItem'
-import IDataObject from '../interfaces'
+import * as React from 'react';
+import DataObject from '../interfaces';
+import ListItem from './ListItem';
 
-type Props = {
-  items: IDataObject[],
+interface Props {
+    items: DataObject[];
+    handleRemove?: (item: DataObject) => void;
 }
 
-const List: React.FunctionComponent<Props> = ({ items }) => (
-  <ul>
-    {items.map((item) => (
-      <li key={item.id}>
-        <ListItem data={item} />
-      </li>
-    ))}
-  </ul>
-)
+const List: React.FunctionComponent<Props> = ({ items, handleRemove }) => (
+    <ul>
+        {items.map(item => (
+            <li key={item.id}>
+                <ListItem data={item} />
+                <span style={{ cursor: 'pointer' }} onClick={() => handleRemove(item)}>
+                    <strong>{`     `}x</strong>
+                </span>
+            </li>
+        ))}
+    </ul>
+);
 
-export default List
+export default List;
