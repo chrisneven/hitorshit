@@ -1,15 +1,15 @@
 import { ApolloServer } from 'apollo-server-express';
-import Express from 'Express';
-import { buildSchema, formatArgumentValidationError } from 'type-graphql';
-import 'reflect-metadata';
-import { createConnection } from 'typeorm';
-import { RegisterResolver } from './modules/user/Register';
-import session from 'express-session';
 import connectRedis from 'connect-redis';
-import { redis } from './redis';
 import cors from 'cors';
+import Express from 'Express';
+import session from 'express-session';
+import 'reflect-metadata';
+import { buildSchema, formatArgumentValidationError } from 'type-graphql';
+import { createConnection } from 'typeorm';
 import { LoginResolver } from './modules/user/Login';
 import { MeResolver } from './modules/user/Me';
+import { RegisterResolver } from './modules/user/Register';
+import { redis } from './redis';
 
 const main = async () => {
     await createConnection();
