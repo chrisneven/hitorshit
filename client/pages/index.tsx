@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import * as React from 'react';
 import Layout from '../components/Layout';
+import { LoginComponent } from '../generated/apolloComponents';
 
 const IndexPage: React.FunctionComponent = () => {
     return (
@@ -11,6 +12,20 @@ const IndexPage: React.FunctionComponent = () => {
                     <a>About</a>
                 </Link>
             </p>
+            <LoginComponent>
+                {login => (
+                    <button
+                        onClick={async () => {
+                            const response = await login({
+                                variables: { email: 'test@test.com', password: 'password' }
+                            });
+                            console.log(response);
+                        }}
+                    >
+                        call login mutation
+                    </button>
+                )}
+            </LoginComponent>
         </Layout>
     );
 };
