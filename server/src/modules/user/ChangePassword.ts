@@ -18,6 +18,12 @@ export class ChangePasswordResolver {
         if (!user) {
             return null;
         }
+        await redis.del(forgotPasswordPrefix + token);
+
         user.password = await bcrypt.hash(password, 12);
+
+        user.save();
+
+        return user;
     }
 }
