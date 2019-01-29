@@ -9,7 +9,7 @@ interface Props {
 }
 
 class ListClass extends React.Component<Props, { items: DataObject[] }> {
-    state = { items: [] as DataObject[] };
+    state = { items: [] };
     static async getInitialProps({ pathname }: NextContext) {
         // Example for including initial props in a Next.js page.
         // Don't forget to include the respective types for any
