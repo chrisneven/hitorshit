@@ -1,5 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import * as React from 'react';
+import Title from '../components/atoms/Title';
 import { InputField } from '../components/fields/InputField';
 import Layout from '../components/Layout';
 import { RegisterComponent } from '../generated/apolloComponents';
@@ -17,6 +18,7 @@ export default () => {
                     >
                         {() => (
                             <Form>
+                                <Title>Register</Title>
                                 <Field name="firstName" component={InputField} placeholder={'firstName'} />
                                 <Field name="lastName" component={InputField} placeholder={'lastname'} />
                                 <Field name="email" component={InputField} placeholder={'email'} />

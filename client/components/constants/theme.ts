@@ -98,9 +98,9 @@ const theme: ThemeInterface = {
         }
     },
     fonts: {
-        title: '500 3.2rem/3.2rem Uniform, sans-serif',
-        subtitle: '500 3.2rem/3.2rem Uniform, sans-serif',
-        body: '400 1.4rem/2.4rem Uniform, sans-serif'
+        title: '500 6rem/6rem Ubuntu, sans-serif',
+        subtitle: '500 3.2rem/3.2rem Ubuntu, sans-serif',
+        body: '400 1.6rem/2.6rem Raleway, sans-serif'
     },
     mediaQueries: {
         xs: '480px',

@@ -1,6 +1,9 @@
 import App, { Container } from 'next/app';
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
+import { ThemeProvider } from 'styled-components';
+import theme from '../components/constants/theme';
+import { GlobalStyles } from '../globalStyling';
 import withApollo from '../lib/withApollo';
 
 class MyApp extends App<any> {
@@ -8,9 +11,12 @@ class MyApp extends App<any> {
         const { Component, pageProps, apolloClient } = this.props;
         return (
             <Container>
-                <ApolloProvider client={apolloClient}>
-                    <Component {...pageProps} />
-                </ApolloProvider>
+                <ThemeProvider theme={theme}>
+                    <ApolloProvider client={apolloClient}>
+                        <GlobalStyles />
+                        <Component {...pageProps} />
+                    </ApolloProvider>
+                </ThemeProvider>
             </Container>
         );
     }

@@ -1,16 +1,9 @@
 import Document from 'next/document';
-import { createGlobalStyle, ServerStyleSheet } from 'styled-components';
-import Typography from 'typography';
-import oceanBeachTheme from 'typography-theme-ocean-beach';
+import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
     static async getInitialProps(ctx: any) {
         const sheet = new ServerStyleSheet();
-        const typography = new Typography(oceanBeachTheme);
-        const GlobalStyle = createGlobalStyle`body {
-            ${typography.createStyles()}
-            }
-          `;
         const originalRenderPage = ctx.renderPage;
         ctx.renderPage = () =>
             originalRenderPage({
