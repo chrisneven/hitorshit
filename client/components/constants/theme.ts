@@ -2,6 +2,7 @@ export interface ThemeInterface {
     colors: {
         primary: {
             spaceman: string;
+            orangebrown: string;
             sinaas: string;
             waterspout: string;
             azureish: string;
@@ -67,6 +68,7 @@ const theme: ThemeInterface = {
     colors: {
         primary: {
             spaceman: '#D6568B',
+            orangebrown: '#e08600',
             sinaas: '#FF9800',
             waterspout: '#FCB853',
             azureish: '#FFD391',
