@@ -33,7 +33,6 @@ export default (App: any) => {
             );
 
             ctx.ctx.apolloClient = apollo;
-
             let appProps = {};
             if (App.getInitialProps) {
                 appProps = await App.getInitialProps(ctx);
