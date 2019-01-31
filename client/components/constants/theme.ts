@@ -76,7 +76,7 @@ const theme: ThemeInterface = {
         },
         dark: {
             registrationBlack: '#000000',
-            muddy: '#2F4858',
+            muddy: '#1f303a',
             haze: '#4A5783',
             dim: '#61696f',
             wood: '#B9A89A'
@@ -100,7 +100,7 @@ const theme: ThemeInterface = {
         }
     },
     fonts: {
-        title: '500 6rem/6rem Ubuntu, sans-serif',
+        title: '500 6rem/6rem Work Sans, sans-serif',
         subtitle: '500 3.2rem/3.2rem Ubuntu, sans-serif',
         body: '400 1.6rem/2.6rem Raleway, sans-serif'
     },

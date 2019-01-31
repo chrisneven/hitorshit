@@ -15,7 +15,13 @@ body {
     margin: 0;
     padding: 0;
     font: ${theme.fonts.body};
+    color: ${theme.colors.dark.muddy}
     
+}
+
+strong{
+
+    color: ${theme.colors.primary.sinaas}
 }
 
 a {

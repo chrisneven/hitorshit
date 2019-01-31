@@ -4,7 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Logo } from './atoms/logo/Logo';
 import { PrimaryButton } from './atoms/PrimaryButton';
-import ProfilePic from './atoms/ProfilePic';
+import OverlayMenu from './molecules/OverlayMenu';
 
 interface Props {
     title?: string;
@@ -16,7 +16,7 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = 'This is the
             <title>{title}</title>
             <meta charSet="utf-8" />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu|Work+Sans:700" rel="stylesheet" />
         </Head>
         <header>
             <Navigation>
@@ -45,12 +45,11 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = 'This is the
                 </Links>
                 <Profile>
                     <PrimaryButton>Get Started</PrimaryButton>
-                    <ProfilePic />
+                    <OverlayMenu />
                 </Profile>
             </Navigation>
         </header>
-
-        {children}
+        <Container>{children}</Container>
         <footer>
             <hr />
             <span>I'm here to stay (Footer)</span>
@@ -60,9 +59,13 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = 'This is the
 
 export default Layout;
 
+const Container = styled.div`
+    margin-top: 7.2rem;
+`;
+
 const LogoWrapper = styled.div`
     height: 100%;
-    background: #161616;
+    background: #1e1e1e;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,6 +82,18 @@ const Navigation = styled.div`
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
+    overflow: hidden;
+    ::after {
+        position: absolute;
+        opacity: 1;
+        content: '';
+        left: 20%;
+        bottom: 0;
+        height: 1px;
+        width: 100%;
+        transition: all 0.25s;
+        background: ${({ theme }) => theme.colors.light.flash};
+    }
 `;
 const Links = styled.nav`
     width: 40%;
@@ -88,13 +103,14 @@ const Links = styled.nav`
 `;
 
 const Profile = styled.div`
-    width: 25%;
+    width: 15%;
     margin-left: auto;
     display: flex;
     flex-direction: row;
     height: 100%;
     justify-content: space-evenly;
     align-items: center;
+    position: relative;
 `;
 
 const StyledLink = styled.div`
@@ -105,8 +121,19 @@ const StyledLink = styled.div`
     justify-content: center;
     font-weight: bolder;
     cursor: pointer;
+    position: relative;
+    :hover {
+        ::after {
+            position: absolute;
+            opacity: 1;
+            content: '';
+            bottom: 0;
+            z-index: 1;
+            height: 0.5rem;
+            width: 100%;
+            transition: all 0.25s;
 
-    :active {
-        background: red;
+            background: ${({ theme }) => theme.colors.primary.sinaas};
+        }
     }
 `;
