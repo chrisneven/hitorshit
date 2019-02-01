@@ -5,11 +5,9 @@ interface Props {
     variant?: 'light' | 'dark';
 }
 const MenuIcon: FunctionComponent<HTMLAttributes<HTMLDivElement> & Props> = ({ children, variant, ...props }) => {
-    console.log(variant);
     return (
         <Container {...props}>
             {Array.from(Array(4)).map((_, i) => {
-                console.log(i);
                 return <Dot key={i} variant={variant} />;
             })}
         </Container>
@@ -42,8 +40,7 @@ const Container = styled.div`
     cursor: pointer;
     transition: all 250ms;
     :hover {
-        transform: rotate(90deg);
-        border-left: 0.3rem solid ${({ theme }) => theme.colors.primary.sinaas};
+        transform: rotate(90deg) scale(1.5);
         /* border-width: 20%; */
     }
 `;

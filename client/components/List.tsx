@@ -12,7 +12,7 @@ const List: React.FunctionComponent<Props> = ({ items, handleRemove }) => (
         {items.map(item => (
             <li key={item.id}>
                 <ListItem data={item} />
-                <span style={{ cursor: 'pointer' }} onClick={() => handleRemove(item)}>
+                <span style={{ cursor: 'pointer' }} onClick={() => handleRemove && handleRemove(item)}>
                     <strong>{`     `}x</strong>
                 </span>
             </li>

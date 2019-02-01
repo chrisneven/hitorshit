@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import Link from 'next/link';
 
-export const Logo = () => <h1 style={{ color: '#FF9800', fontWeight: 'bold' }}>HitOrShit</h1>;
-
-const Container = styled.h2`
-    color
-`;
+export const Logo = () => (
+    <Link href={'/'}>
+        <h1 style={{ fontWeight: 'bold', fontFamily: 'Raleway, sans-serif', cursor: 'pointer' }}>hitorshit.</h1>
+    </Link>
+);

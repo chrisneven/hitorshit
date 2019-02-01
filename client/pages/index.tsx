@@ -20,7 +20,7 @@ const IndexPage: React.FunctionComponent = () => {
                         Accusantium iusto neque consequatur odio ut, expedita dignissimos nihil harum praesentium veniam
                         voluptate.
                     </p>
-                    <PrimaryButton>Start now!</PrimaryButton>
+                    <PrimaryButton variant={'light'}>Start now!</PrimaryButton>
                 </Left>
                 <Right />
             </Header>
@@ -64,7 +64,7 @@ const Header = styled.div`
 
 const Left = styled.div`
     padding: 10rem;
-    width: 60%;
+    width: 55%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -76,5 +76,7 @@ const Right = styled.div`
     background-image: url('https://images.unsplash.com/photo-1421878512040-134f5e04e971?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9');
     background-repeat: none;
     background-size: cover;
-    width: 40%;
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+    width: 45%;
 `;

@@ -30,7 +30,7 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = 'This is the
                     <Link href="/">
                         <StyledLink>Home</StyledLink>
                     </Link>
-                    <Link href="/list-fc">
+                    <Link href="/ranking">
                         <StyledLink>Top 10</StyledLink>
                     </Link>
                     <Link href="/list-class">
@@ -44,7 +44,7 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = 'This is the
                     </Link>
                 </Links>
                 <Profile>
-                    <PrimaryButton>Get Started</PrimaryButton>
+                    <PrimaryButton variant={'light'}>Get Started</PrimaryButton>
                     <OverlayMenu />
                 </Profile>
             </Navigation>
@@ -61,15 +61,14 @@ export default Layout;
 
 const Container = styled.div`
     margin-top: 7.2rem;
+    /* padding: 0 10rem; */
 `;
 
 const LogoWrapper = styled.div`
     height: 100%;
-    background: #1e1e1e;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20%;
 `;
 const Navigation = styled.div`
     width: 100%;
@@ -78,32 +77,20 @@ const Navigation = styled.div`
     z-index: 1;
     top: 0px;
     height: 7.2rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
     align-items: center;
+    display: grid;
+    grid-template-columns: 1.5fr 4.5fr 1.5fr;
     overflow: hidden;
-    ::after {
-        position: absolute;
-        opacity: 1;
-        content: '';
-        left: 20%;
-        bottom: 0;
-        height: 1px;
-        width: 100%;
-        transition: all 0.25s;
-        background: ${({ theme }) => theme.colors.light.flash};
-    }
 `;
 const Links = styled.nav`
-    width: 40%;
     height: 100%;
     display: flex;
     justify-content: space-between;
+    width: 60%;
 `;
 
 const Profile = styled.div`
-    width: 15%;
+    /* width: 15%; */
     margin-left: auto;
     display: flex;
     flex-direction: row;
@@ -127,10 +114,13 @@ const StyledLink = styled.div`
             position: absolute;
             opacity: 1;
             content: '';
+            left: 50% - 1rem;
             bottom: 0;
             z-index: 1;
-            height: 0.5rem;
-            width: 100%;
+            height: 1rem;
+            width: 1rem
+            border-radius: 50%;
+
             transition: all 0.25s;
 
             background: ${({ theme }) => theme.colors.primary.sinaas};

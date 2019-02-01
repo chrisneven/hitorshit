@@ -101,7 +101,7 @@ const theme: ThemeInterface = {
     },
     fonts: {
         title: '500 6rem/6rem Work Sans, sans-serif',
-        subtitle: '500 3.2rem/3.2rem Ubuntu, sans-serif',
+        subtitle: '500 3.2rem/3.2rem Work Sans, sans-serif',
         body: '400 1.6rem/2.6rem Raleway, sans-serif'
     },
     mediaQueries: {

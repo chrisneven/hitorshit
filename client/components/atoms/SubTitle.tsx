@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import { ThemeInterface } from '../constants/theme';
 
-const Title = styled.h1`
+interface Props {
+    variant: 'light' | 'dark';
+}
+const SubTitle = styled.h1<Props>`
     font: ${({ theme }) => (theme as ThemeInterface).fonts.title};
-    color: ${({ theme }) => (theme as ThemeInterface).colors.dark.muddy};
-    font-size: 7.2rem;
+    color: ${({ theme, variant }) => (variant === 'dark' ? (theme as ThemeInterface).colors.dark.muddy : 'white')};
+    /* font-size: 7.2rem; */
     line-height: 7.2rem;
-    margin: 0;
+    margin: 1rem 0;
     padding: 0;
     > strong {
         color: ${({ theme }) => (theme as ThemeInterface).colors.dark.muddy};
@@ -18,4 +21,4 @@ const Title = styled.h1`
     }
 `;
 
-export default Title;
+export default SubTitle;

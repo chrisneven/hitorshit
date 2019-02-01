@@ -1,5 +1,6 @@
 import { NextContext } from 'next';
 import React, { FormEvent } from 'react';
+import { PrimaryButton } from '../components/atoms/PrimaryButton';
 import Layout from '../components/Layout';
 import List from '../components/List';
 import DataObject from '../interfaces';
@@ -9,7 +10,7 @@ interface Props {
 }
 
 class ListClass extends React.Component<Props, { items: DataObject[] }> {
-    state = { items: [] };
+    state = { items: [] as DataObject[] };
     static async getInitialProps({ pathname }: NextContext) {
         // Example for including initial props in a Next.js page.
         // Don't forget to include the respective types for any
@@ -38,6 +39,7 @@ class ListClass extends React.Component<Props, { items: DataObject[] }> {
         e.preventDefault();
         const { items } = this.state;
         const calculatedId = items[items.length - 1] ? items[items.length - 1].id + 1 : 101;
+        // @ts-ignore
         items.push({ id: calculatedId, name: e.target[0].value });
         this.setState({ items });
     };
@@ -50,7 +52,8 @@ class ListClass extends React.Component<Props, { items: DataObject[] }> {
                 <form onSubmit={this.handleAdd}>
                     <label id="name">item: </label>
                     <input id="name" name="name" type="text" />
-                    <button type="submit">Add item</button>
+                    <br />
+                    <PrimaryButton type="submit">Add item</PrimaryButton>
                 </form>
             </Layout>
         );
