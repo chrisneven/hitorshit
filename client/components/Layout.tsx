@@ -33,14 +33,14 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = 'This is the
                     <Link href="/ranking">
                         <StyledLink>Top 10</StyledLink>
                     </Link>
-                    <Link href="/list-class">
-                        <StyledLink>List As Class</StyledLink>
-                    </Link>
-                    <Link href="/about">
-                        <StyledLink>About</StyledLink>
+                    <Link href="/hello">
+                        <StyledLink>Hello</StyledLink>
                     </Link>
                     <Link href="/register">
                         <StyledLink>Register</StyledLink>
+                    </Link>
+                    <Link href="/sign-in">
+                        <StyledLink>Sign in</StyledLink>
                     </Link>
                 </Links>
                 <Profile>

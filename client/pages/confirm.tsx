@@ -17,7 +17,7 @@ export default class Confirm extends React.PureComponent<ConfirmProps, any> {
             mutation: confirmUserMutation,
             variables: { token }
         });
-        redirect(ctx, '/login');
+        redirect(ctx, '/sign-in');
         return {};
     }
     public render() {

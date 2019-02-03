@@ -26,6 +26,14 @@ export interface TrackInput {
 // Documents
 // ====================================================
 
+export type HelloVariables = {};
+
+export type HelloQuery = {
+  __typename?: "Query";
+
+  hello: string;
+};
+
 export type ConfirmUserVariables = {
   token: string;
 };
@@ -90,6 +98,44 @@ import gql from "graphql-tag";
 // Components
 // ====================================================
 
+export const HelloDocument = gql`
+  query Hello {
+    hello
+  }
+`;
+export class HelloComponent extends React.Component<
+  Partial<ReactApollo.QueryProps<HelloQuery, HelloVariables>>
+> {
+  render() {
+    return (
+      <ReactApollo.Query<HelloQuery, HelloVariables>
+        query={HelloDocument}
+        {...(this as any)["props"] as any}
+      />
+    );
+  }
+}
+export type HelloProps<TChildProps = any> = Partial<
+  ReactApollo.DataProps<HelloQuery, HelloVariables>
+> &
+  TChildProps;
+export function HelloHOC<TProps, TChildProps = any>(
+  operationOptions:
+    | ReactApollo.OperationOption<
+        TProps,
+        HelloQuery,
+        HelloVariables,
+        HelloProps<TChildProps>
+      >
+    | undefined
+) {
+  return ReactApollo.graphql<
+    TProps,
+    HelloQuery,
+    HelloVariables,
+    HelloProps<TChildProps>
+  >(HelloDocument, operationOptions);
+}
 export const ConfirmUserDocument = gql`
   mutation ConfirmUser($token: String!) {
     confirmUser(token: $token)

@@ -1,4 +1,5 @@
 import { Field, Form, Formik } from 'formik';
+import Router from 'next/router';
 import * as React from 'react';
 import { PrimaryButton } from '../components/atoms/PrimaryButton';
 import Title from '../components/atoms/Title';
@@ -17,6 +18,7 @@ export default () => {
                         onSubmit={async (data, { setErrors }) => {
                             try {
                                 const response = await register({ variables: { data } });
+                                Router.push('/check-email');
                             } catch (e) {
                                 const errors: { [key: string]: string } = {};
                                 e.graphQLErrors[0].validationErrors.forEach((validationError: any) => {
